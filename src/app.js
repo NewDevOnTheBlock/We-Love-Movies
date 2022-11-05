@@ -3,7 +3,7 @@ const express = require("express");
 
 // route handlers
 const moviesRouter = require("./movies/movies.router")
-const theatersRouter = require("./movie-theaters/movie-theaters.router")
+const theatersRouter = require("./theaters/theaters.router")
 const reviewsRouter = require("./reviews/reviews.router")
 
 // create the express instance, store it in the app variable
