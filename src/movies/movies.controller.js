@@ -1,6 +1,7 @@
-const express = require("express")
 const moviesService = require("./movies.service")
 
+// asyncErrorBoundary
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 // validate movie existence
 async function movieExists(req, res, next) {
     const { movieId } = req.params;
@@ -36,13 +37,14 @@ async function list(req, res, next) {
 }
 
 async function read(req, res, next) {
-    const { movieId } = req.params
-    const movie = await moviesService.read(movieId)
-    res.json({ data: movie })
+    res.json({ data: res.locals.movie })
 }
 
 module.exports = {
     list,
-    read: [movieExists, read],
+    read: [
+        asyncErrorBoundary(movieExists), 
+        asyncErrorBoundary(read),
+    ],
     movieExists,
 }
