@@ -14,7 +14,7 @@ app.use(express.json())
 
 // define each route: movies, movie-theaters, reviews
 app.use("/movies", moviesRouter)
-app.use("/movie-theaters", theatersRouter)
+app.use("/theaters", theatersRouter)
 app.use("/reviews", reviewsRouter)
 
 
