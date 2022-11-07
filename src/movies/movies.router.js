@@ -13,13 +13,15 @@ const cors = require("cors");
 router.use("/:moviesId/theaters", controller.movieExists, theatersRouter)
 // check the reviews of a specific movie
 router.use("/:movieId/reviews", controller.movieExists, reviewsRouter)
+
 // view a specific movie
 router.route("/:movieId")
-    .read(controller.read())
-    .all(methodNotAllowed)
-// view all movies
-router.route("/")
-    .get(controller.list())
+    .get(controller.read)
     .all(methodNotAllowed)
 
-module.exports = router
+// view all movies
+router.route("/")
+    .get(controller.list)
+    .all(methodNotAllowed)
+
+module.exports = router;

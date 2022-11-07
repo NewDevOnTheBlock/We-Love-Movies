@@ -1,7 +1,7 @@
 const knex = require("../db/connection")
 
 function listAllMovies() {
-    return knex("movies as m").select("*")
+    return knex("movies").select("*")
 }
 
 function listShowingMovies() {
@@ -11,10 +11,9 @@ function listShowingMovies() {
 }
 
 function read(movieId) {
-    return knex("movies as m")
+    return knex("movies")
         .select("*")
         .where({ movie_id: movieId })
-        .then(data => data)
 }
 
 module.exports = {

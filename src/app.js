@@ -6,9 +6,9 @@ const app = express();
 const moviesRouter = require("./movies/movies.router")
 const theatersRouter = require("./theaters/theaters.router")
 const reviewsRouter = require("./reviews/reviews.router");
-const errorHandler = require("./errors/errorHandler");
+// error handlers
 const notFound = require("./errors/routeNotFound");
-
+const errorHandler = require("./errors/errorHandler");
 // allow express to take a .json payload
 app.use(express.json())
 
