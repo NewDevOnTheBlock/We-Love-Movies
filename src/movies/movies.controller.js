@@ -10,6 +10,7 @@ async function movieExists(req, res, next) {
     const movie = await moviesService.read(movieId);
     if (movie) {
         res.locals.movie = movie;
+        res.locals.movieId = movieId
         return next();
     }
     return next({

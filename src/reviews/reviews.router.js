@@ -7,11 +7,11 @@ const cors = require("cors")
 // define routes to endpoints
 // route to specific review
 router.route("/:reviewId")
-    .get()
+    .get(controller.read)
     .all(methodNotAllowed)
 // route to list of ratings
 router.route("/")
-    .get()
+    .get(controller.list)
     .all(methodNotAllowed)
 
 module.exports = router
