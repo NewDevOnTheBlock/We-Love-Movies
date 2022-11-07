@@ -7,15 +7,15 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 // validate movie existence
 async function movieExists(req, res, next) {
     const { movieId } = req.params;
-    const foundMovie = await moviesService.read(movieId);
-    if (foundMovie) {
-        res.locals.movie = foundMovie;
-        return next()
+    const movie = await moviesService.read(movieId);
+    if (movie) {
+        res.locals.movie = movie;
+        return next();
     }
     return next({
         status: 404,
         message: `A movie with the ID of ${movieId} could not be found.`,
-    })
+    });
 }
 
 // route handlers
